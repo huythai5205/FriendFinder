@@ -12,6 +12,7 @@ module.exports = function (app) {
         let friendMatch;
         oFriends.forEach(friend => {
             let friendScore = 0;
+            console.log(friend);
             for (let i = 0; i < friend.scores.length; i++) {
                 friendScore += Math.abs(+friend.scores[i] - +user['scores[]'][i]);
             }
@@ -21,7 +22,7 @@ module.exports = function (app) {
             }
             // console.log(friendMatch);
         });
-
+        console.log(user);
         oFriends.push(user);
         res.json(friendMatch);
     });

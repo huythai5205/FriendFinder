@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     $('#submitSurveyBtn').on('click', function (event) {
         event.preventDefault();
+
         const friend = {
             name: $('#nameInput').val(),
             photo: $('#photoUrl').val(),
