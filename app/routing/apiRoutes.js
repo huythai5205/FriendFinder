@@ -22,7 +22,7 @@ module.exports = function (app) {
             }
             // console.log(friendMatch);
         });
-        console.log(user);
+        //console.log(user);
         oFriends.push(user);
         res.json(friendMatch);
     });
