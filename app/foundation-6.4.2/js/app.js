@@ -1,27 +1,33 @@
+let alreadyAttached = false;
 $(document).ready(function () {
+    if (!alreadyAttached) {
+        alreadyAttached = true;
+        $('#submitSurveyBtn').on('click', function (event) {
+            event.preventDefault();
+            console.log("Field id " + event.target.id + " is invalid");
 
-    $('#submitSurveyBtn').on('click', function (event) {
-        event.preventDefault();
+            var modal = new Foundation.Reveal($(document.getElementById("match-friend-modal")));
 
-        $('#match-friend-modal').foundation('open');
-        // const userScores = $.map($('input:checked'), function (value) {
-        //     return value.value;
-        // });
+            const friend = {
+                name: $('#nameInput').val(),
+                photo: $('#photoUrl').val(),
+                scores: $.map($('input:checked'), function (value) {
+                    return value.value;
+                })
+            }
 
-        let userScores = [];
-        for (let i = 0; i < $('input:checked').length; i++) {
-            userScores.push($('input:checked')[i].value);
-        }
-
-        const friend = {
-            name: $('#nameInput').val(),
-            photo: $('#photoUrl').val(),
-            scores: userScores
-        }
-
-        $.post('/api/friend', friend, function (data) {
-            //$('#match-friend-modal').clear();
-            // console.log(data);
+            fetch('/api/friend', {
+                    method: 'POST',
+                    body: JSON.stringify(friend),
+                    headers: new Headers({
+                        'Content-Type': 'application/json'
+                    })
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => {
+                    console.log(response);
+                    $('#match-friend-modal').foundation('open');
+                });
         });
-    });
+    }
 });
