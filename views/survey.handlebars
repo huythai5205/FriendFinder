@@ -1,62 +1,56 @@
-<div class="grid-container">
-  <form>
-    <div class="grid-container">
-      <h3>Survey Question</h3>
-      <hr>
-      <h4>
-        <strong>About You</strong>
-      </h4>
-      <div class="grid-x grid-padding-x">
-        <div class="medium-6 cell">
-          <label>Name (Required)
-            <input type="text" id="nameInput" required>
-          </label>
-        </div>
-        <div class="medium-6 cell">
-          <label>Link to Photo Image (Required)
-            <input type="text" id="photoUrl" required>
-          </label>
-        </div>
-      </div>
-      <h4>Question 1</h4>
-      <fieldset id="questionOne" class="large-6 cell">
-        <legend>Choose Your Favorite</legend>
-        <input type="radio" name="questionOne" value="1" required>
-        <label>1</label>
-        <input type="radio" name="questionOne" value="2">
-        <label>2</label>
-        <input type="radio" name="questionOne" value="3">
-        <label>3</label>
-        <input type="radio" name="questionOne" value="4">
-        <label>4</label>
-        <input type="radio" name="questionOne" value="5">
-        <label>5</label>
-      </fieldset>
-      <h4>Question 1</h4>
-      <fieldset id="questionTwo" class="large-6 cell">
-        <legend>Choose Your Favorite</legend>
-        <input type="radio" name="questionTwo" value="1" required>
-        <label>1</label>
-        <input type="radio" name="questionTwo" value="2">
-        <label>2</label>
-        <input type="radio" name="questionTwo" value="3">
-        <label>3</label>
-        <input type="radio" name="questionTwo" value="4">
-        <label>4</label>
-        <input type="radio" name="questionTwo" value="5">
-        <label>5</label>
-      </fieldset>
-      <input type="submit" id="submitSurveyBtn">
+<div class="container">
+  <h3>Survey Question</h3>
+  <hr>
+  <h4>
+    <strong>About You</strong>
+  </h4>
+  <div class="grid-x grid-padding-x">
+    <div class="medium-6 cell">
+      <label>Name (Required)
+        <input type="text" id="nameInput">
+      </label>
     </div>
-  </form>
+    <div class="medium-6 cell">
+      <label>Link to Photo Image (Required)
+        <input type="text" id="photoUrl">
+      </label>
+    </div>
+  </div>
+  <h4>Question 1</h4>
+  <fieldset id="questionOne" class="large-6 cell">
+    <legend>Choose Your Favorite</legend>
+    <input type="radio" name="questionOne" value="1">
+    <label>1</label>
+    <input type="radio" name="questionOne" value="2">
+    <label>2</label>
+    <input type="radio" name="questionOne" value="3">
+    <label>3</label>
+    <input type="radio" name="questionOne" value="4">
+    <label>4</label>
+    <input type="radio" name="questionOne" value="5">
+    <label>5</label>
+  </fieldset>
+  <h4>Question 1</h4>
+  <fieldset id="questionTwo" class="large-6 cell">
+    <legend>Choose Your Favorite</legend>
+    <input type="radio" name="questionTwo" value="1">
+    <label>1</label>
+    <input type="radio" name="questionTwo" value="2">
+    <label>2</label>
+    <input type="radio" name="questionTwo" value="3">
+    <label>3</label>
+    <input type="radio" name="questionTwo" value="4">
+    <label>4</label>
+    <input type="radio" name="questionTwo" value="5">
+    <label>5</label>
+  </fieldset>
+
+  <button class="button" id="submitSurveyBtn" data-open="match-friend-modal">Submit</button>
 </div>
 
 <div class="reveal" id="match-friend-modal" data-reveal>
+  <div id="match-data"></div>
   <button class="close-button" data-close aria-label="Close modal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
-<p>
-  <button class="button" data-open="match-friend-modal">Click me for a modal</button>
-</p>

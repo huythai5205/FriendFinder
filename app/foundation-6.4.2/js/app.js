@@ -2,11 +2,13 @@ let alreadyAttached = false;
 $(document).ready(function () {
     if (!alreadyAttached) {
         alreadyAttached = true;
-        $('#submitSurveyBtn').on('click', function (event) {
-            event.preventDefault();
-            console.log("Field id " + event.target.id + " is invalid");
 
-            var modal = new Foundation.Reveal($(document.getElementById("match-friend-modal")));
+        const validForm = function () {
+
+        }
+
+
+        $('#submitSurveyBtn').on('click', function (event) {
 
             const friend = {
                 name: $('#nameInput').val(),
@@ -25,9 +27,18 @@ $(document).ready(function () {
                 }).then(res => res.json())
                 .catch(error => console.error('Error:', error))
                 .then(response => {
-                    console.log(response);
-                    $('#match-friend-modal').foundation('open');
+                    var options = {
+                        slideSpeed: 500
+                    };
+                    const modal = new Foundation.Reveal($('#match-friend-modal'), options);
+                    $('#match-data').empty();
+                    $('#match-data').append(`
+                    <h1>Your friend match: ${response.name}</h1>
+                    <img src="${response.url}">
+                    `);
+                    modal.open();
                 });
-        });
+        });;
+
     }
 });
