@@ -7,6 +7,8 @@ $(document).ready(function () {
 
         }
 
+        const modal = new Foundation.Reveal($('#match-friend-modal'));
+
 
         $('#submitSurveyBtn').on('click', function (event) {
 
@@ -27,10 +29,6 @@ $(document).ready(function () {
                 }).then(res => res.json())
                 .catch(error => console.error('Error:', error))
                 .then(response => {
-                    var options = {
-                        slideSpeed: 500
-                    };
-                    const modal = new Foundation.Reveal($('#match-friend-modal'), options);
                     $('#match-data').empty();
                     $('#match-data').append(`
                     <h1>Your friend match: ${response.name}</h1>
