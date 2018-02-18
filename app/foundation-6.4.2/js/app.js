@@ -1,41 +1,50 @@
 let alreadyAttached = false;
-$(document).ready(function () {
+$(document).foundation().ready(function () {
     if (!alreadyAttached) {
         alreadyAttached = true;
+        const validateForm = function () {
+            if ($('#nameInput').val() === '' || $('#photoUrl').val() === '' || $('input:checked').length != 10) {
+                return false;
+            }
 
-        const validForm = function () {
-
+            return true;
         }
-
-        const modal = new Foundation.Reveal($('#match-friend-modal'));
-
 
         $('#submitSurveyBtn').on('click', function (event) {
 
-            const friend = {
-                name: $('#nameInput').val(),
-                photo: $('#photoUrl').val(),
-                scores: $.map($('input:checked'), function (value) {
-                    return value.value;
-                })
+            if (validateForm()) {
+                const friend = {
+                    name: $('#nameInput').val().trim(),
+                    photo: $('#photoUrl').val().trim(),
+                    scores: $.map($('input:checked'), function (value) {
+                        return value.value;
+                    })
+                }
+
+                fetch('/api/friend', {
+                        method: 'POST',
+                        body: JSON.stringify(friend),
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        })
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => {
+                        $('#match-data').empty();
+                        $('#match-data').append(`
+                        <h5><strong>Your friend match:</strong> ${response.name}</h5>
+                        <img class="match-img" src="${response.photo}">
+                        `);
+                        $('#match-friend-modal').foundation('open');
+                    });
+            } else {
+                $('#match-data').empty();
+                $('#match-data').append(`
+                <h4>Please fill out all inputs to get your match.
+                `);
+                $('#match-friend-modal').foundation('open');
             }
 
-            fetch('/api/friend', {
-                    method: 'POST',
-                    body: JSON.stringify(friend),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                }).then(res => res.json())
-                .catch(error => console.error('Error:', error))
-                .then(response => {
-                    $('#match-data').empty();
-                    $('#match-data').append(`
-                    <h1>Your friend match: ${response.name}</h1>
-                    <img src="${response.url}">
-                    `);
-                    modal.open();
-                });
         });;
 
     }

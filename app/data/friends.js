@@ -1,17 +1,17 @@
 const friends = [{
-        "name": "1",
-        "photo": "photo1",
-        "scores": ["1", "1"]
+        "name": "Wonder Woman",
+        "photo": "images/wonder-woman.jpg",
+        "scores": ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]
     },
     {
-        "name": "3",
-        "photo": "photo3",
-        "scores": ["3", "3"]
+        "name": "Agent Carter",
+        "photo": "images/agent-carter.jpg",
+        "scores": ["3", "3", "3", "3", "3", "3", "3", "3", "3", "3"]
     },
     {
-        "name": "5",
-        "photo": "photo5",
-        "scores": ["5", "5"]
+        "name": "Harley Quinn",
+        "photo": "images/harley-quinn.png",
+        "scores": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5"]
     }
 ]
 

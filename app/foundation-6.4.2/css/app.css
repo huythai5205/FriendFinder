@@ -1,11 +1,7 @@
-.index-container {
-    width: 700px;
-    height: 400px;
-    margin: 0 auto;
-}
-
 .index-contents {
+    width: 700px;
     height: 300px;
+    margin: 0 auto;
     background-color: whitesmoke;
     padding: 30px;
 }
@@ -17,4 +13,19 @@
 
 h3 {
     color: #1799d6;
+}
+
+.main-container {
+    padding: 20px;
+}
+
+.survey-question-container {
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.match-img {
+    width: 600px;
+    height: 500px;
 }
